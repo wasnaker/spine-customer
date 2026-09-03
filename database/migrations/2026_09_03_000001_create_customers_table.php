@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Schema;
 /**
  * Tabel customers — entity utama modul Customer.
  *
- * Tidak ada kolom 'status' karena Customer bukan alur-kerja — lifecycle
- * pakai is_active. parent_vat_number menyimpan NPWP HO (nullable: bisa
- * kosong untuk customer tanpa HO, atau sama dengan NPWP cabang tertentu).
+ * Lifecycle: is_active (boolean), soft deletes, ulid.
+ * NPWP HO attach via vat_id FK ke vats.id (module spine-vat). Kalau
+ * customer tanpa NPWP HO, vat_id = null. Branch NPWP pakai branches.vat_id.
  */
 return new class extends Migration
 {
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone', 32)->nullable();
-            $table->string('parent_vat_number', 32)->nullable();
+            $table->foreignId('vat_id')->nullable()->constrained('vats')->nullOnDelete();
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();

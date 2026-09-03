@@ -6,8 +6,8 @@ namespace Modules\Customer\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Vat\Models\Vat;
 use Spine\Traits\HasLifecycleHooks;
@@ -15,11 +15,9 @@ use Spine\Traits\HasLifecycleHooks;
 /**
  * Customer — entity utama modul Customer.
  *
- * - branches:     kantor cabang / site / pabrik (hasMany).
- * - vats:         NPWP yang melekat (morphMany). Tabel 'vats' di-own
- *                 module spine-vat; relasi via fully-qualified
- *                 class name (Modules\Vat\Models\Vat). Lihat
- *                 spine-vat/README.md untuk pola attach.
+ * - branches: kantor cabang / site / pabrik (hasMany).
+ * - vat:     NPWP HO (belongsTo vats, nullable). 1 NPWP = 1 row global;
+ *            banyak customer bisa share row Vat yang sama via FK id.
  */
 class Customer extends Model
 {
@@ -31,7 +29,7 @@ class Customer extends Model
 
     protected $fillable = [
         'code', 'name', 'email', 'phone',
-        'parent_vat_number', 'is_active',
+        'vat_id', 'is_active',
     ];
 
     protected $casts = [
@@ -48,8 +46,8 @@ class Customer extends Model
         return $this->hasMany(Branch::class);
     }
 
-    public function vats(): MorphMany
+    public function vat(): BelongsTo
     {
-        return $this->morphMany(Vat::class, 'vattable');
+        return $this->belongsTo(Vat::class);
     }
 }

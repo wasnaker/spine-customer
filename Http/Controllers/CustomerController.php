@@ -16,12 +16,10 @@ use Spine\Services\ActivityLogService;
  * CRUD Customer — modul Customer.
  *
  * Field business:
- *   - code              (unique kode internal)
+ *   - code          (unique kode internal)
  *   - name, email, phone
- *   - parent_vat_number (NPWP HO, nullable). Disimpan literal di sini
- *                        + otomatis di-attach ke record Vat via
- *                        VatService::findOrCreate() (module spine-vat).
- *   - is_active         (boolean)
+ *   - npwp          (string dari form; auto-create Vat row, simpan vat_id FK)
+ *   - is_active     (boolean)
  *
  * Activity log OTOMATIS via EntityCreated/Updated/Deleted (HasLifecycleHooks)
  * -> listener LogCustomerActivity di ServiceProvider.
@@ -36,7 +34,7 @@ class CustomerController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $query = Customer::query();
+        $query = Customer::with('vat');
 
         if ($request->filled('q')) {
             $term = $request->string('q');
@@ -56,20 +54,21 @@ class CustomerController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'code'              => ['required', 'string', 'max:64', 'unique:customers,code'],
-            'name'              => ['required', 'string', 'max:190'],
-            'email'             => ['nullable', 'string', 'email', 'max:190'],
-            'phone'             => ['nullable', 'string', 'max:32'],
-            'parent_vat_number' => ['nullable', 'string', 'max:32'],
-            'is_active'         => ['sometimes', 'boolean'],
+            'code'      => ['required', 'string', 'max:64', 'unique:customers,code'],
+            'name'      => ['required', 'string', 'max:190'],
+            'email'     => ['nullable', 'string', 'email', 'max:190'],
+            'phone'     => ['nullable', 'string', 'max:32'],
+            'npwp'      => ['nullable', 'string', 'max:32'],
+            'is_active' => ['sometimes', 'boolean'],
         ]);
 
-        $entity = Customer::create($validated);
-
-        // Auto-attach NPWP ke Vat (module spine-vat) — idempotent.
-        if ($entity->parent_vat_number) {
-            $this->vats->findOrCreate($entity->parent_vat_number, $entity, $entity->name);
+        $vatId = null;
+        if (! empty($validated['npwp'])) {
+            $vatId = $this->vats->findOrCreateId($validated['npwp'], $validated['name']);
         }
+        unset($validated['npwp']);
+
+        $entity = Customer::create($validated + ['vat_id' => $vatId]);
 
         Log::info("[Customer] created", ['id' => $entity->id, 'code' => $entity->code]);
 
@@ -78,7 +77,7 @@ class CustomerController extends Controller
 
     public function show(int $id): JsonResponse
     {
-        $entity = Customer::with(['branches', 'vats'])->find($id);
+        $entity = Customer::with(['branches.vat', 'vat'])->find($id);
 
         if (! $entity) {
             return response()->json(['message' => 'Customer not found'], 404);
@@ -96,20 +95,24 @@ class CustomerController extends Controller
         }
 
         $validated = $request->validate([
-            'code'              => ['sometimes', 'string', 'max:64', 'unique:customers,code,' . $id],
-            'name'              => ['sometimes', 'string', 'max:190'],
-            'email'             => ['nullable', 'string', 'email', 'max:190'],
-            'phone'             => ['nullable', 'string', 'max:32'],
-            'parent_vat_number' => ['nullable', 'string', 'max:32'],
-            'is_active'         => ['sometimes', 'boolean'],
+            'code'      => ['sometimes', 'string', 'max:64', 'unique:customers,code,' . $id],
+            'name'      => ['sometimes', 'string', 'max:190'],
+            'email'     => ['nullable', 'string', 'email', 'max:190'],
+            'phone'     => ['nullable', 'string', 'max:32'],
+            'npwp'      => ['nullable', 'string', 'max:32'],
+            'is_active' => ['sometimes', 'boolean'],
         ]);
 
-        $entity->update($validated);
-
-        // Re-attach NPWP kalau parent_vat_number berubah.
-        if ($request->has('parent_vat_number') && $entity->parent_vat_number) {
-            $this->vats->findOrCreate($entity->parent_vat_number, $entity, $entity->name);
+        if (array_key_exists('npwp', $validated)) {
+            if (! empty($validated['npwp'])) {
+                $entity->vat_id = $this->vats->findOrCreateId($validated['npwp'], $entity->name);
+            } else {
+                $entity->vat_id = null;
+            }
+            unset($validated['npwp']);
         }
+
+        $entity->update($validated);
 
         Log::info("[Customer] updated", ['id' => $entity->id, 'code' => $entity->code]);
 
@@ -153,8 +156,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * Branches milik customer ini (nested resource — proxy ke BranchController::index
-     * dengan filter customer_id).
+     * Branches milik customer ini (nested resource).
      */
     public function branches(int $id, Request $request): JsonResponse
     {

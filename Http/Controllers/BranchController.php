@@ -9,28 +9,30 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Modules\Customer\Models\Branch;
-use Modules\Customer\Models\Customer;
+use Modules\Vat\Services\VatService;
 use Spine\Services\ActivityLogService;
 
 /**
  * CRUD Branch — kantor cabang / site / pabrik.
  *
  * Field:
- *   - customer_id   FK ke customers
- *   - code          (nullable, kode internal cabang)
+ *   - customer_id  FK ke customers
+ *   - code         (nullable)
  *   - name, address, phone
- *   - vat_id        FK ke vats (NPWP cabang, nullable)
+ *   - npwp         (string dari form; auto-create Vat row, simpan vat_id)
  *   - is_active
  */
 class BranchController extends Controller
 {
-    public function __construct(private readonly ActivityLogService $activityLog)
-    {
+    public function __construct(
+        private readonly ActivityLogService $activityLog,
+        private readonly VatService $vats,
+    ) {
     }
 
     public function index(Request $request): JsonResponse
     {
-        $query = Branch::query();
+        $query = Branch::with('vat');
 
         if ($request->has('customer_id')) {
             $query->where('customer_id', (int) $request->query('customer_id'));
@@ -50,11 +52,17 @@ class BranchController extends Controller
             'name'        => ['required', 'string', 'max:190'],
             'address'     => ['nullable', 'string'],
             'phone'       => ['nullable', 'string', 'max:32'],
-            'vat_id'      => ['nullable', 'integer', 'exists:vats,id'],
+            'npwp'        => ['nullable', 'string', 'max:32'],
             'is_active'   => ['sometimes', 'boolean'],
         ]);
 
-        $entity = Branch::create($validated);
+        $vatId = null;
+        if (! empty($validated['npwp'])) {
+            $vatId = $this->vats->findOrCreateId($validated['npwp'], $validated['name']);
+        }
+        unset($validated['npwp']);
+
+        $entity = Branch::create($validated + ['vat_id' => $vatId]);
 
         Log::info("[Branch] created", ['id' => $entity->id, 'customer_id' => $entity->customer_id]);
 
@@ -86,9 +94,18 @@ class BranchController extends Controller
             'name'        => ['sometimes', 'string', 'max:190'],
             'address'     => ['nullable', 'string'],
             'phone'       => ['nullable', 'string', 'max:32'],
-            'vat_id'      => ['nullable', 'integer', 'exists:vats,id'],
+            'npwp'        => ['nullable', 'string', 'max:32'],
             'is_active'   => ['sometimes', 'boolean'],
         ]);
+
+        if (array_key_exists('npwp', $validated)) {
+            if (! empty($validated['npwp'])) {
+                $entity->vat_id = $this->vats->findOrCreateId($validated['npwp'], $entity->name);
+            } else {
+                $entity->vat_id = null;
+            }
+            unset($validated['npwp']);
+        }
 
         $entity->update($validated);
 

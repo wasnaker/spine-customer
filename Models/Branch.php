@@ -7,7 +7,6 @@ namespace Modules\Customer\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Vat\Models\Vat;
 use Spine\Traits\HasLifecycleHooks;
@@ -16,10 +15,9 @@ use Spine\Traits\HasLifecycleHooks;
  * Branch — kantor cabang / site / pabrik milik Customer.
  *
  * - customer: parent (belongsTo).
- * - vat:     NPWP cabang (belongsTo vats, nullable). Tabel 'vats'
- *            di-own module spine-vat.
- * - vats:    morphMany ke spine-vat (untuk ke depan kalau 1 cabang
- *            bisa attach beberapa NPWP).
+ * - vat:     NPWP cabang (belongsTo vats, nullable). Boleh null jika
+ *            cabang tanpa NPWP sendiri atau NPWP-nya = HO (vat_id
+ *            di parent customer).
  */
 class Branch extends Model
 {
@@ -51,10 +49,5 @@ class Branch extends Model
     public function vat(): BelongsTo
     {
         return $this->belongsTo(Vat::class);
-    }
-
-    public function vats(): MorphMany
-    {
-        return $this->morphMany(Vat::class, 'vattable');
     }
 }
