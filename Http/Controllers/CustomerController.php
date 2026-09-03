@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Modules\Customer\Models\Customer;
-use Modules\Customer\Models\Vat;
+use Modules\Vat\Services\VatService;
 use Spine\Services\ActivityLogService;
 
 /**
@@ -18,7 +18,9 @@ use Spine\Services\ActivityLogService;
  * Field business:
  *   - code              (unique kode internal)
  *   - name, email, phone
- *   - parent_vat_number (NPWP HO, nullable)
+ *   - parent_vat_number (NPWP HO, nullable). Disimpan literal di sini
+ *                        + otomatis di-attach ke record Vat via
+ *                        VatService::findOrCreate() (module spine-vat).
  *   - is_active         (boolean)
  *
  * Activity log OTOMATIS via EntityCreated/Updated/Deleted (HasLifecycleHooks)
@@ -26,8 +28,10 @@ use Spine\Services\ActivityLogService;
  */
 class CustomerController extends Controller
 {
-    public function __construct(private readonly ActivityLogService $activityLog)
-    {
+    public function __construct(
+        private readonly ActivityLogService $activityLog,
+        private readonly VatService $vats,
+    ) {
     }
 
     public function index(Request $request): JsonResponse
@@ -61,6 +65,11 @@ class CustomerController extends Controller
         ]);
 
         $entity = Customer::create($validated);
+
+        // Auto-attach NPWP ke Vat (module spine-vat) — idempotent.
+        if ($entity->parent_vat_number) {
+            $this->vats->findOrCreate($entity->parent_vat_number, $entity, $entity->name);
+        }
 
         Log::info("[Customer] created", ['id' => $entity->id, 'code' => $entity->code]);
 
@@ -96,6 +105,11 @@ class CustomerController extends Controller
         ]);
 
         $entity->update($validated);
+
+        // Re-attach NPWP kalau parent_vat_number berubah.
+        if ($request->has('parent_vat_number') && $entity->parent_vat_number) {
+            $this->vats->findOrCreate($entity->parent_vat_number, $entity, $entity->name);
+        }
 
         Log::info("[Customer] updated", ['id' => $entity->id, 'code' => $entity->code]);
 

@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Customer\Models\Vat;
+use Modules\Vat\Models\Vat;
 use Spine\Traits\HasLifecycleHooks;
 
 /**
  * Branch — kantor cabang / site / pabrik milik Customer.
  *
  * - customer: parent (belongsTo).
- * - vat:     NPWP cabang (belongsTo vats, nullable). Boleh null jika
- *            cabang tanpa NPWP sendiri atau NPWP-nya = HO (parent_vat_number).
- * - vats:    NPWP lain yang melekat ke branch ini (morphMany — untuk
- *            ke depan kalau 1 cabang bisa punya beberapa NPWP).
+ * - vat:     NPWP cabang (belongsTo vats, nullable). Tabel 'vats'
+ *            di-own module spine-vat.
+ * - vats:    morphMany ke spine-vat (untuk ke depan kalau 1 cabang
+ *            bisa attach beberapa NPWP).
  */
 class Branch extends Model
 {

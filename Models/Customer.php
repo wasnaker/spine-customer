@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Customer\Models\Vat;
+use Modules\Vat\Models\Vat;
 use Spine\Traits\HasLifecycleHooks;
 
 /**
  * Customer — entity utama modul Customer.
  *
- * - branches:     daftar kantor cabang / site / pabrik (hasMany).
- * - vats:         NPWP yang melekat pada customer ini (morphMany — bisa 0..N).
- *                 Satu NPWP bisa dipakai banyak customer/cabang; dibuat
- *                 terpisah di tabel 'vats' agar modul lain (Surveyor)
- *                 bisa attach Vat yang sama tanpa duplikasi.
+ * - branches:     kantor cabang / site / pabrik (hasMany).
+ * - vats:         NPWP yang melekat (morphMany). Tabel 'vats' di-own
+ *                 module spine-vat; relasi via fully-qualified
+ *                 class name (Modules\Vat\Models\Vat). Lihat
+ *                 spine-vat/README.md untuk pola attach.
  */
 class Customer extends Model
 {
