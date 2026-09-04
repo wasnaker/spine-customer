@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Vat\Models\Vat;
 use Modules\Region\Models\Province;
@@ -35,7 +36,7 @@ class Customer extends Model
     protected $fillable = [
         'type',
         'code', 'name', 'email', 'phone',
-        'address', 'province_id', 'regency_id', 'vat_id', 'is_active', 'parent_id', 'admin_id', 'pengawas_id',
+        'address', 'province_id', 'regency_id', 'vat_id', 'is_active', 'parent_id', 'admin_id',
     ];
 
     protected $casts = [
@@ -71,9 +72,10 @@ class Customer extends Model
         return $this->belongsTo(User::class, 'admin_id');
     }
 
-    public function pengawas(): BelongsTo
+    public function pengawas(): BelongsToMany
     {
-        return $this->belongsTo(User::class, 'pengawas_id');
+        return $this->belongsToMany(User::class, 'customer_pengawas', 'customer_id', 'pengawas_id')
+            ->withTimestamps();
     }
 
     public function province(): BelongsTo

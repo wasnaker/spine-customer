@@ -13,6 +13,7 @@ use Modules\Connection\Services\ActorResolver;
 use Modules\Customer\Models\Customer;
 use Modules\Vat\Services\VatService;
 use Spine\Services\ActivityLogService;
+use App\Models\User;
 
 /**
  * CRUD Customer — modul Customer.
@@ -314,5 +315,59 @@ class CustomerController extends Controller
             ]);
 
         return response()->json(['data' => $logs]);
+    }
+
+    /**
+     * Daftar pengawas yang ter-assign ke customer/branch ini.
+     */
+    public function pengawas(int $id, Request $request): JsonResponse
+    {
+        if (! $this->allowAccessTo($request, $id)) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        $customer = Customer::find($id);
+
+        if (! $customer) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        return response()->json([
+            'data' => $customer->pengawas()
+                ->orderBy('name')
+                ->get(['users.id', 'users.name', 'users.email']),
+        ]);
+    }
+
+    /**
+     * Assign (sync) pengawas ke customer/branch. Body: { pengawas_ids: int[] }.
+     * Relasi many-to-many: 1 customer bisa punya banyak pengawas.
+     */
+    public function assignPengawas(int $id, Request $request): JsonResponse
+    {
+        $customer = Customer::find($id);
+
+        if (! $customer) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        $validated = $request->validate([
+            'pengawas_ids'   => ['required', 'array'],
+            'pengawas_ids.*' => ['integer'],
+        ]);
+
+        $ids = $validated['pengawas_ids'];
+
+        // Hanya user ber-role pengawas yang valid (hindari assign sembarang).
+        $valid = User::role(['pengawas', 'pengawas-spesialis'])->whereIn('id', $ids)->pluck('id')->all();
+        $customer->pengawas()->sync($valid);
+
+        Log::info('[Customer] pengawas assigned', ['id' => $customer->id, 'pengawas_ids' => $valid, 'by' => $request->user()->id]);
+
+        return response()->json([
+            'data' => $customer->pengawas()
+                ->orderBy('name')
+                ->get(['users.id', 'users.name', 'users.email']),
+        ]);
     }
 }
