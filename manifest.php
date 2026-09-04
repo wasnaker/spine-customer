@@ -50,6 +50,14 @@ return [
             'permission' => 'branch:view|customer:view-connected',
         ],
         [
+            'slug'       => 'pengawas',
+            'label'      => 'Pengawas',
+            'icon'       => '🛡️',
+            'api'        => '/api/v1/customers/{id}/pengawas',
+            'position'   => 25,
+            'permission' => 'pengawas:view|customer:view|customer:view-connected',
+        ],
+        [
             'slug'       => 'activity',
             'label'      => 'Activity',
             'icon'       => '🕐',

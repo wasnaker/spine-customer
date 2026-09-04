@@ -352,7 +352,7 @@ class CustomerController extends Controller
         }
 
         $validated = $request->validate([
-            'pengawas_ids'   => ['required', 'array'],
+            'pengawas_ids'   => ['present', 'array'],
             'pengawas_ids.*' => ['integer'],
         ]);
 
