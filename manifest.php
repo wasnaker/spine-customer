@@ -66,15 +66,16 @@ return [
             'branch:view',   'branch:create',   'branch:edit',   'branch:delete',
         ],
         'roles' => [
+            // Role BASE semua user entity customer: TANPA customer:view (menu
+            // Customers di-block; data company via Profile /user/company).
+            // surveyor:view-connected = menu Surveyors utk rekan terhubung.
             ['name' => 'customer',              'label' => 'Customer',
-             'permissions' => ['customer:view', 'connection:view', 'surveyor:view-connected']],
+             'permissions' => ['connection:view', 'surveyor:view-connected']],
             ['name' => 'customer-branch-admin', 'label' => 'Customer Branch Admin',
-             'permissions' => ['customer:view', 'branch:*',
-                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
+             'permissions' => ['connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
                 'surveyor:view-connected']],
             ['name' => 'customer-admin',        'label' => 'Customer Admin',
-             'permissions' => ['customer:*', 'branch:*',
-                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
+             'permissions' => ['connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
                 'surveyor:view-connected']],
         ],
         'grants' => [
