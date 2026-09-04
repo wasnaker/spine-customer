@@ -35,7 +35,7 @@ class Customer extends Model
     protected $fillable = [
         'type',
         'code', 'name', 'email', 'phone',
-        'address', 'province_id', 'regency_id', 'vat_id', 'is_active', 'parent_id', 'admin_id',
+        'address', 'province_id', 'regency_id', 'vat_id', 'is_active', 'parent_id', 'admin_id', 'pengawas_id',
     ];
 
     protected $casts = [
@@ -69,6 +69,11 @@ class Customer extends Model
     public function admin(): BelongsTo
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function pengawas(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'pengawas_id');
     }
 
     public function province(): BelongsTo
