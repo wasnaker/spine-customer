@@ -23,12 +23,12 @@ use Modules\Customer\Http\Controllers\CustomerController;
 
 Route::prefix('api/v1')->middleware('auth:sanctum')->group(function () {
     Route::prefix('customers')->group(function () {
-        Route::get('/', [CustomerController::class, 'index'])->middleware('permission:customer:view');
+        Route::get('/', [CustomerController::class, 'index'])->middleware('permission:customer:view|customer:view-connected');
         Route::post('/', [CustomerController::class, 'store'])->middleware('permission:customer:create');
-        Route::get('/{id}', [CustomerController::class, 'show'])->whereNumber('id')->middleware('permission:customer:view');
+        Route::get('/{id}', [CustomerController::class, 'show'])->whereNumber('id')->middleware('permission:customer:view|customer:view-connected');
         Route::put('/{id}', [CustomerController::class, 'update'])->whereNumber('id')->middleware('permission:customer:edit');
-        Route::get('/{id}/activity-logs', [CustomerController::class, 'activityLogs'])->whereNumber('id')->middleware('permission:customer:view');
-        Route::get('/{id}/branches', [CustomerController::class, 'branches'])->whereNumber('id')->middleware('permission:branch:view');
+        Route::get('/{id}/activity-logs', [CustomerController::class, 'activityLogs'])->whereNumber('id')->middleware('permission:customer:view|customer:view-connected');
+        Route::get('/{id}/branches', [CustomerController::class, 'branches'])->whereNumber('id')->middleware('permission:branch:view|customer:view-connected');
         Route::delete('/{id}', [CustomerController::class, 'destroy'])->whereNumber('id')->middleware('permission:customer:delete');
     });
 });

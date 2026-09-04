@@ -18,7 +18,8 @@ return [
             'icon'       => '👥',
             'href'       => '/customers',
             'position'   => 30,
-            'permission' => 'customer:view',
+            // Platform (customer:view) ATAU surveyor dgn koneksi (view-connected).
+            'permission' => 'customer:view|customer:view-connected',
         ],
     ],
 
@@ -38,7 +39,7 @@ return [
             'icon'       => '👁️',
             'api'        => '/api/v1/customers/{id}',
             'position'   => 10,
-            'permission' => 'customer:view',
+            'permission' => 'customer:view|customer:view-connected',
         ],
         [
             'slug'       => 'branches',
@@ -46,7 +47,7 @@ return [
             'icon'       => '🏢',
             'api'        => '/api/v1/customers/{id}/branches',
             'position'   => 20,
-            'permission' => 'branch:view',
+            'permission' => 'branch:view|customer:view-connected',
         ],
         [
             'slug'       => 'activity',
@@ -54,13 +55,14 @@ return [
             'icon'       => '🕐',
             'api'        => '/api/v1/customers/{id}/activity-logs',
             'position'   => 30,
-            'permission' => 'customer:view',
+            'permission' => 'customer:view|customer:view-connected',
         ],
     ],
 
     'rbac' => [
         'permissions' => [
             'customer:view', 'customer:create', 'customer:edit', 'customer:delete',
+            'customer:view-connected',
             'branch:view',   'branch:create',   'branch:edit',   'branch:delete',
         ],
         'roles' => [

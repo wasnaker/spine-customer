@@ -8,6 +8,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
+use Modules\Connection\Models\Connection;
+use Modules\Connection\Services\ActorResolver;
 use Modules\Customer\Models\Customer;
 use Modules\Vat\Services\VatService;
 use Spine\Services\ActivityLogService;
@@ -31,12 +33,62 @@ class CustomerController extends Controller
     public function __construct(
         private readonly ActivityLogService $activityLog,
         private readonly VatService $vats,
+        private readonly ActorResolver $actors,
     ) {
+    }
+
+    /**
+     * True kalau caller akses penuh (platform: customer:view).
+     * Caller view-connected (surveyor) TIDAK punya customer:view.
+     */
+    private function isFullAccess(Request $request): bool
+    {
+        return $request->user()->hasPermissionTo('customer:view');
+    }
+
+    /**
+     * Customer id yang terhubung ACTIVE dengan surveyor entity user.
+     */
+    private function connectedCustomerIds(int $surveyorId): array
+    {
+        return Connection::where('surveyor_id', $surveyorId)
+            ->where('status', 'active')
+            ->pluck('customer_id')
+            ->all();
+    }
+
+    /**
+     * Guard record utk caller surveyor (view-connected): row customer hanya
+     * boleh diakses kalau terhubung active. Platform lolos tanpa cek.
+     */
+    private function allowAccessTo(Request $request, int $customerId): bool
+    {
+        if ($this->isFullAccess($request)) {
+            return true;
+        }
+
+        $actor = $this->actors->resolve($request->user());
+        if ($actor['type'] !== 'surveyor') {
+            return false;
+        }
+
+        return in_array($customerId, $this->connectedCustomerIds($actor['entity']->id), true);
     }
 
     public function index(Request $request): JsonResponse
     {
         $query = Customer::with([ 'vat', 'parent:id,code,name', 'admin:id,name', 'province:id,name', 'regency:id,name']);
+
+        // Caller surveyor (view-connected): daftar dibatasi customer yg
+        // terhubung ACTIVE dengannya (direktori rekanan via connection).
+        if (! $this->isFullAccess($request)) {
+            $actor = $this->actors->resolve($request->user());
+            if ($actor['type'] !== 'surveyor') {
+                return response()->json(['message' => 'Forbidden.'], 403);
+            }
+            $ids = $this->connectedCustomerIds($actor['entity']->id);
+            $query->whereIn('id', $ids === [] ? [0] : $ids);
+        }
 
         if ($request->filled('q')) {
             $term = $request->string('q');
@@ -122,8 +174,12 @@ class CustomerController extends Controller
         return response()->json($entity, 201);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id, Request $request): JsonResponse
     {
+        if (! $this->allowAccessTo($request, $id)) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
         $entity = Customer::with(['branches.vat', 'branches.parent:id,code,name', 'branches.admin:id,name', 'branches.province:id,name', 'branches.regency:id,name',  'vat', 'parent:id,code,name', 'admin:id,name', 'province:id,name', 'regency:id,name'])->find($id);
 
         if (! $entity) {
@@ -204,8 +260,12 @@ class CustomerController extends Controller
         return response()->json(['message' => 'Customer deleted']);
     }
 
-    public function branches(int $id): JsonResponse
+    public function branches(int $id, Request $request): JsonResponse
     {
+        if (! $this->allowAccessTo($request, $id)) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
         $parent = Customer::find($id);
 
         if (! $parent) {
@@ -215,8 +275,12 @@ class CustomerController extends Controller
         return response()->json(['data' => $parent->branches()->with(['vat', 'admin:id,name', 'province:id,name', 'regency:id,name'])->get()]);
     }
 
-    public function activityLogs(int $id): JsonResponse
+    public function activityLogs(int $id, Request $request): JsonResponse
     {
+        if (! $this->allowAccessTo($request, $id)) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
         if (! Customer::find($id)) {
             return response()->json(['message' => 'Customer not found'], 404);
         }
