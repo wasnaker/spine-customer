@@ -272,7 +272,20 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        return response()->json(['data' => $parent->branches()->with(['vat', 'admin:id,name', 'province:id,name', 'regency:id,name'])->get()]);
+        $query = $parent->branches()->with(['vat', 'admin:id,name', 'province:id,name', 'regency:id,name']);
+
+        // Caller surveyor (view-connected): branch TIDAK otomatis terhubung —
+        // hanya tampilkan cabang yang punya connection ACTIVE dengannya.
+        if (! $this->isFullAccess($request)) {
+            $actor = $this->actors->resolve($request->user());
+            if ($actor['type'] !== 'surveyor') {
+                return response()->json(['message' => 'Forbidden.'], 403);
+            }
+            $ids = $this->connectedCustomerIds($actor['entity']->id);
+            $query->whereIn('customers.id', $ids === [] ? [0] : $ids);
+        }
+
+        return response()->json(['data' => $query->get()]);
     }
 
     public function activityLogs(int $id, Request $request): JsonResponse
