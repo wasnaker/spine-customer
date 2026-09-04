@@ -43,7 +43,8 @@ class CustomerController extends Controller
      */
     private function isFullAccess(Request $request): bool
     {
-        return $request->user()->hasPermissionTo('customer:view');
+        // can() via Gate — hormati Gate::before (role admin = super-admin).
+        return $request->user()->can('customer:view');
     }
 
     /**
