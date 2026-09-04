@@ -65,13 +65,15 @@ return [
         ],
         'roles' => [
             ['name' => 'customer',              'label' => 'Customer',
-             'permissions' => ['customer:view', 'connection:view']],
+             'permissions' => ['customer:view', 'connection:view', 'surveyor:view-connected']],
             ['name' => 'customer-branch-admin', 'label' => 'Customer Branch Admin',
              'permissions' => ['customer:view', 'branch:*',
-                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel']],
+                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
+                'surveyor:view-connected']],
             ['name' => 'customer-admin',        'label' => 'Customer Admin',
              'permissions' => ['customer:*', 'branch:*',
-                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel']],
+                'connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
+                'surveyor:view-connected']],
         ],
         'grants' => [
             'staff' => ['customer:view', 'branch:view'],
