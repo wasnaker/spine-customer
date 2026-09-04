@@ -332,11 +332,7 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        return response()->json([
-            'data' => $customer->pengawas()
-                ->orderBy('name')
-                ->get(['users.id', 'users.name', 'users.email']),
-        ]);
+        return response()->json(['data' => $this->pengawasPayload($customer)]);
     }
 
     /**
@@ -364,10 +360,24 @@ class CustomerController extends Controller
 
         Log::info('[Customer] pengawas assigned', ['id' => $customer->id, 'pengawas_ids' => $valid, 'by' => $request->user()->id]);
 
-        return response()->json([
-            'data' => $customer->pengawas()
-                ->orderBy('name')
-                ->get(['users.id', 'users.name', 'users.email']),
-        ]);
+        return response()->json(['data' => $this->pengawasPayload($customer)]);
+    }
+
+    /**
+     * Payload pengawas: realname dari agency_staffs (fallback users.name).
+     * Dipakai GET /{id}/pengawas dan PUT /{id}/pengawas (assign).
+     */
+    private function pengawasPayload(Customer $customer): array
+    {
+        return $customer->pengawas()
+            ->with('agencyStaff:id,user_id,realname')
+            ->orderBy('name')
+            ->get(['users.id', 'users.name', 'users.email'])
+            ->map(fn ($u) => [
+                'id'    => $u->id,
+                'name'  => $u->agencyStaff?->realname ?? $u->name,
+                'email' => $u->email,
+            ])
+            ->all();
     }
 }
