@@ -58,6 +58,7 @@ class CustomerController extends Controller
             'name'      => ['required', 'string', 'max:190'],
             'email'     => ['nullable', 'string', 'email', 'max:190'],
             'phone'     => ['nullable', 'string', 'max:32'],
+            'address'   => ['nullable', 'string', 'max:255'],
             'npwp'      => ['nullable', 'string', 'max:32'],
             'is_active' => ['sometimes', 'boolean'],
         ]);
@@ -99,6 +100,7 @@ class CustomerController extends Controller
             'name'      => ['sometimes', 'string', 'max:190'],
             'email'     => ['nullable', 'string', 'email', 'max:190'],
             'phone'     => ['nullable', 'string', 'max:32'],
+            'address'   => ['nullable', 'string', 'max:255'],
             'npwp'      => ['nullable', 'string', 'max:32'],
             'is_active' => ['sometimes', 'boolean'],
         ]);

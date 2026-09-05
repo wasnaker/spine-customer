@@ -28,7 +28,7 @@ class Customer extends Model
     protected $table = 'customers';
 
     protected $fillable = [
-        'code', 'name', 'email', 'phone',
+        'code', 'name', 'email', 'phone', 'address',
         'vat_id', 'is_active',
     ];
 
@@ -43,6 +43,7 @@ class Customer extends Model
             'name'      => 'Perusahaan',
             'email'     => 'Email',
             'phone'     => 'Telepon',
+            'address'   => 'Alamat',
             'vat_id'    => 'Nomor Pajak (NPWP)',
             'is_active' => 'Aktif',
         ];
