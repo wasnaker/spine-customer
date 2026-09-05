@@ -58,6 +58,14 @@ return [
             'permission' => 'pengawas:view|customer:view|customer:view-connected',
         ],
         [
+            'slug'       => 'staffs',
+            'label'      => 'Staff',
+            'icon'       => '👥',
+            'api'        => '/api/v1/customers/{id}/staffs',
+            'position'   => 26,
+            'permission' => 'customer:view|customer:view-connected',
+        ],
+        [
             'slug'       => 'activity',
             'label'      => 'Activity',
             'icon'       => '🕐',

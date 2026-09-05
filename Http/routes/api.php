@@ -31,6 +31,7 @@ Route::prefix('api/v1')->middleware('auth:sanctum')->group(function () {
         Route::get('/{id}/branches', [CustomerController::class, 'branches'])->whereNumber('id')->middleware('permission:branch:view|customer:view-connected');
         Route::get('/{id}/pengawas', [CustomerController::class, 'pengawas'])->whereNumber('id')->middleware('permission:pengawas:assign|customer:view|customer:view-connected');
         Route::put('/{id}/pengawas', [CustomerController::class, 'assignPengawas'])->whereNumber('id')->middleware('permission:pengawas:assign');
+        Route::get('/{id}/staffs', [CustomerController::class, 'staffs'])->whereNumber('id')->middleware('permission:customer:view|customer:view-connected');
         Route::delete('/{id}', [CustomerController::class, 'destroy'])->whereNumber('id')->middleware('permission:customer:delete');
     });
 });

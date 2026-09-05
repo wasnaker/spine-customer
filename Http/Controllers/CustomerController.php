@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Modules\Connection\Models\Connection;
 use Modules\Connection\Services\ActorResolver;
 use Modules\Customer\Models\Customer;
+use Modules\Customer\Models\CustomerStaff;
 use Modules\Vat\Services\VatService;
 use Spine\Services\ActivityLogService;
 use App\Models\User;
@@ -286,6 +287,26 @@ class CustomerController extends Controller
             $ids = $this->connectedCustomerIds($actor['entity']->id);
             $query->whereIn('customers.id', $ids === [] ? [0] : $ids);
         }
+
+        return response()->json(['data' => $query->get()]);
+    }
+
+    /**
+     * Staff customer — pola Agency::staffs(). HO: semua staff (HO + branch
+     * anak, customer_id=HO utk semua). Branch: hanya staff branch tsb.
+     */
+    public function staffs(int $id): JsonResponse
+    {
+        $customer = Customer::find($id);
+
+        if (! $customer) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        $query = CustomerStaff::query()
+            ->with(['user:id,name,email'])
+            ->where('customer_id', $customer->id)
+            ->orderBy('jabatan')->orderBy('realname');
 
         return response()->json(['data' => $query->get()]);
     }
