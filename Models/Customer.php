@@ -36,6 +36,18 @@ class Customer extends Model
         'is_active' => 'boolean',
     ];
 
+    public static function labels(): array
+    {
+        return [
+            'code'      => 'Kode',
+            'name'      => 'Perusahaan',
+            'email'     => 'Email',
+            'phone'     => 'Telepon',
+            'vat_id'    => 'Nomor Pajak (NPWP)',
+            'is_active' => 'Aktif',
+        ];
+    }
+
     public function uniqueIds(): array
     {
         return ['ulid'];
