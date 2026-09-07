@@ -101,6 +101,15 @@ class CustomerStaffSeeder extends Seeder
             ['email' => 'fajar-pratama@wasnaker.lan', 'name' => 'fajar-pratama', 'realname' => 'Fajar Pratama', 'jabatan' => 'Admin Cabang', 'phone' => null, 'customer_code' => 'J02', 'branch_code' => 'J02', 'role' => 'customer'],
             ['email' => 'sari-hutapea@wasnaker.lan', 'name' => 'sari-hutapea', 'realname' => 'Sari Hutapea', 'jabatan' => 'Admin Cabang', 'phone' => null, 'customer_code' => 'J03', 'branch_code' => 'J03', 'role' => 'customer'],
             ['email' => 'budi-lestari@wasnaker.lan', 'name' => 'budi-lestari', 'realname' => 'Budi Lestari', 'jabatan' => 'Admin Cabang', 'phone' => null, 'customer_code' => 'J03', 'branch_code' => 'J03', 'role' => 'customer'],
+            ['email' => 'rudi-hartono@wasnaker.lan', 'name' => 'rudi-hartono', 'realname' => 'Rudi Hartono', 'jabatan' => 'HRD', 'phone' => null, 'customer_code' => 'ALPHA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'susi-susanti@wasnaker.lan', 'name' => 'susi-susanti', 'realname' => 'Susi Susanti', 'jabatan' => 'HRD', 'phone' => null, 'customer_code' => 'ANTARIKSA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'teguh-prasetyo@wasnaker.lan', 'name' => 'teguh-prasetyo', 'realname' => 'Teguh Prasetyo', 'jabatan' => 'HRD', 'phone' => null, 'customer_code' => 'BINTANG', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'dian-pertiwi@wasnaker.lan', 'name' => 'dian-pertiwi', 'realname' => 'Dian Pertiwi', 'jabatan' => 'Finance', 'phone' => null, 'customer_code' => 'CENDANA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'hendra-gunawan@wasnaker.lan', 'name' => 'hendra-gunawan', 'realname' => 'Hendra Gunawan', 'jabatan' => 'Purchasing', 'phone' => null, 'customer_code' => 'CENDANA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'ratih-kumala@wasnaker.lan', 'name' => 'ratih-kumala', 'realname' => 'Ratih Kumala', 'jabatan' => 'HRD', 'phone' => null, 'customer_code' => 'CENDANA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'rina-marlina@wasnaker.lan', 'name' => 'rina-marlina', 'realname' => 'Rina Marlina', 'jabatan' => 'Finance', 'phone' => null, 'customer_code' => 'CITRA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'bowo-laksono@wasnaker.lan', 'name' => 'bowo-laksono', 'realname' => 'Bowo Laksono', 'jabatan' => 'Purchasing', 'phone' => null, 'customer_code' => 'CITRA', 'branch_code' => null, 'role' => 'customer'],
+            ['email' => 'sri-wahyuni@wasnaker.lan', 'name' => 'sri-wahyuni', 'realname' => 'Sri Wahyuni', 'jabatan' => 'HRD', 'phone' => null, 'customer_code' => 'CITRA', 'branch_code' => null, 'role' => 'customer'],
         ];
 
         foreach ($staffs as $s) {
