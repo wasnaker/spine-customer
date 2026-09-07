@@ -28,9 +28,13 @@ class CustomerDemoSeeder extends Seeder
             ->keyBy(fn ($r) => $r->province_id . ':' . $r->name);
 
         $hoIds = []; // code => id
-        foreach ($this->loadData() as [$code, $name, $email, $phone, $address, $isActive, $province, $regency, $parentCode, $npwp, $vatName, $adminEmail]) {
+        // Start number = ID AWAL TABEL (keputusan 5 Sep 2026, lihat settings modul).
+        // JSON di-dump urut id asc → id = start + index row. code = encode(id).
+        $startId = 20721;
+        foreach ($this->loadData() as $i => [$code, $name, $email, $phone, $address, $isActive, $province, $regency, $parentCode, $npwp, $vatName, $adminEmail]) {
             $provId = $provinces[$province] ?? null;
             $regId  = $provId && $regency ? ($regencies[$provId . ':' . $regency]->id ?? null) : null;
+            $entityId = $startId + $i;
 
             $vat = $npwp ? Vat::firstOrCreate(['npwp' => $npwp], ['name' => $vatName]) : null;
 
@@ -43,8 +47,10 @@ class CustomerDemoSeeder extends Seeder
             $type = $parentCode !== null ? 'branch' : 'customer';
 
             $customer = Customer::firstOrCreate(
-                ['code' => $code, 'parent_id' => $parentId],
+                ['id' => $entityId],
                 [
+                    'code'      => $code,
+                    'parent_id' => $parentId,
                     'type'      => $type,
                     'name'      => $name,
                     'is_active' => $isActive === 'true',
@@ -52,6 +58,7 @@ class CustomerDemoSeeder extends Seeder
             );
             $customer->update([
                 'type'        => $type,
+                'parent_id'   => $parentId,
                 'name'        => $name,
                 'email'       => $email,
                 'phone'       => $phone,
