@@ -41,8 +41,13 @@ return new class extends Migration
         if (Schema::hasColumn('customers', 'parent')) {
             $hasUnique = DB::select("SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_NAME='customers' AND CONSTRAINT_TYPE='UNIQUE' AND TABLE_SCHEMA=DATABASE() AND CONSTRAINT_NAME LIKE '%parent_code%'");
             if (empty($hasUnique)) {
-                Schema::table('customers', function (Blueprint $table) {
-                    $table->dropUnique(['code']);
+                $hasGlobalUnique = DB::select("SELECT CONSTRAINT_NAME FROM information_schema.TABLE_CONSTRAINTS WHERE TABLE_NAME='customers' AND CONSTRAINT_TYPE='UNIQUE' AND TABLE_SCHEMA=DATABASE() AND CONSTRAINT_NAME='customers_code_unique'");
+                Schema::table('customers', function (Blueprint $table) use ($hasGlobalUnique) {
+                    // Idempoten: unique global `code` mungkin sudah tidak ada
+                    // (mis. DB sudah pernah migrasi self-ref sebelumnya).
+                    if ($hasGlobalUnique) {
+                        $table->dropUnique('customers_code_unique');
+                    }
                     $table->unique(['parent', 'code']);
                 });
             }
