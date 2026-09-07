@@ -80,7 +80,7 @@ class CustomerController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $query = Customer::with([ 'vat', 'parent:id,code,name', 'admin:id,name', 'province:id,name', 'regency:id,name']);
+        $query = Customer::with([ 'vat', 'parent:id,code,name', 'admin:id,name', 'staff', 'province:id,name', 'regency:id,name']);
 
         // Caller surveyor (view-connected): daftar dibatasi customer yg
         // terhubung ACTIVE dengannya (direktori rekanan via connection).
@@ -183,7 +183,7 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        $entity = Customer::with(['branches.vat', 'branches.parent:id,code,name', 'branches.admin:id,name', 'branches.province:id,name', 'branches.regency:id,name',  'vat', 'parent:id,code,name', 'admin:id,name', 'province:id,name', 'regency:id,name'])->find($id);
+        $entity = Customer::with(['branches.vat', 'branches.parent:id,code,name', 'branches.admin:id,name', 'branches.staff', 'branches.province:id,name', 'branches.regency:id,name',  'vat', 'parent:id,code,name', 'admin:id,name', 'staff', 'province:id,name', 'regency:id,name'])->find($id);
 
         if (! $entity) {
             return response()->json(['message' => 'Customer not found'], 404);
@@ -275,7 +275,7 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        $query = $parent->branches()->with(['vat', 'admin:id,name', 'province:id,name', 'regency:id,name']);
+        $query = $parent->branches()->with(['vat', 'admin:id,name', 'staff', 'province:id,name', 'regency:id,name']);
 
         // Caller surveyor (view-connected): branch TIDAK otomatis terhubung —
         // hanya tampilkan cabang yang punya connection ACTIVE dengannya.

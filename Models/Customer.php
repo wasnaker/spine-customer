@@ -72,6 +72,15 @@ class Customer extends Model
         return $this->belongsTo(User::class, 'admin_id');
     }
 
+    /**
+     * Staff (profil) entity ini — 1:1 admin row: realname dipakai UI
+     * (users.name hanya utk login). Admin entity = staff juga.
+     */
+    public function staff(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(CustomerStaff::class, 'customer_id');
+    }
+
     public function pengawas(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'customer_pengawas', 'customer_id', 'pengawas_id')
