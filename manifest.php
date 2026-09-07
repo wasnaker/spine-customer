@@ -75,6 +75,29 @@ return [
         ],
     ],
 
+    'settings' => [
+        [
+            'slug'     => 'customer',
+            'label'    => 'Customer',
+            'icon'     => '👥',
+            'position' => 50,
+            'fields'   => [
+                [
+                    'key'     => 'customer_start_number',
+                    'label'   => 'Start Number',
+                    'type'    => 'number',
+                    'default' => '20721',
+                ],
+                [
+                    'key'     => 'customer_code_length',
+                    'label'   => 'Code Length',
+                    'type'    => 'number',
+                    'default' => '4',
+                ],
+            ],
+        ],
+    ],
+
     'rbac' => [
         'permissions' => [
             'customer:view', 'customer:create', 'customer:edit', 'customer:delete',
