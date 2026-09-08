@@ -22,7 +22,7 @@ class CustomerStaffsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 488,
-                'user_id' => 766,
+                'user_id' => 10249,
                 'customer_id' => 20721,
                 'realname' => 'Budi Sihombing',
                 'jabatan' => 'Admin Perusahaan',
@@ -34,7 +34,7 @@ class CustomerStaffsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 489,
-                'user_id' => 767,
+                'user_id' => 10250,
                 'customer_id' => 20722,
                 'realname' => 'Umi Wibowo',
                 'jabatan' => 'Admin Perusahaan',
@@ -46,7 +46,7 @@ class CustomerStaffsTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 490,
-                'user_id' => 768,
+                'user_id' => 10251,
                 'customer_id' => 20723,
                 'realname' => 'Eko Hutapea',
                 'jabatan' => 'Admin Perusahaan',
@@ -58,7 +58,7 @@ class CustomerStaffsTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 491,
-                'user_id' => 769,
+                'user_id' => 10252,
                 'customer_id' => 20724,
                 'realname' => 'Tono Tambunan',
                 'jabatan' => 'Admin Perusahaan',
@@ -70,7 +70,7 @@ class CustomerStaffsTableSeeder extends Seeder
             4 => 
             array (
                 'id' => 492,
-                'user_id' => 770,
+                'user_id' => 10253,
                 'customer_id' => 20725,
                 'realname' => 'Agus Sihombing',
                 'jabatan' => 'Admin Perusahaan',
@@ -82,7 +82,7 @@ class CustomerStaffsTableSeeder extends Seeder
             5 => 
             array (
                 'id' => 493,
-                'user_id' => 771,
+                'user_id' => 10254,
                 'customer_id' => 20726,
                 'realname' => 'Gita Sinaga',
                 'jabatan' => 'Admin Perusahaan',
@@ -94,7 +94,7 @@ class CustomerStaffsTableSeeder extends Seeder
             6 => 
             array (
                 'id' => 494,
-                'user_id' => 772,
+                'user_id' => 10255,
                 'customer_id' => 20727,
                 'realname' => 'Gita Tambunan',
                 'jabatan' => 'Admin Perusahaan',
@@ -106,7 +106,7 @@ class CustomerStaffsTableSeeder extends Seeder
             7 => 
             array (
                 'id' => 495,
-                'user_id' => 773,
+                'user_id' => 10256,
                 'customer_id' => 20728,
                 'realname' => 'Umi Nasution',
                 'jabatan' => 'Admin Perusahaan',
@@ -118,7 +118,7 @@ class CustomerStaffsTableSeeder extends Seeder
             8 => 
             array (
                 'id' => 496,
-                'user_id' => 774,
+                'user_id' => 10257,
                 'customer_id' => 20729,
                 'realname' => 'Dewi Tambunan',
                 'jabatan' => 'Admin Perusahaan',
@@ -130,7 +130,7 @@ class CustomerStaffsTableSeeder extends Seeder
             9 => 
             array (
                 'id' => 497,
-                'user_id' => 775,
+                'user_id' => 10258,
                 'customer_id' => 20730,
                 'realname' => 'Slamet Hidayat',
                 'jabatan' => 'Admin Perusahaan',
@@ -142,7 +142,7 @@ class CustomerStaffsTableSeeder extends Seeder
             10 => 
             array (
                 'id' => 498,
-                'user_id' => 776,
+                'user_id' => 10259,
                 'customer_id' => 20731,
                 'realname' => 'Kadek Lestari',
                 'jabatan' => 'Admin Perusahaan',
@@ -154,7 +154,7 @@ class CustomerStaffsTableSeeder extends Seeder
             11 => 
             array (
                 'id' => 499,
-                'user_id' => 777,
+                'user_id' => 10260,
                 'customer_id' => 20732,
                 'realname' => 'Dewi Rahayu',
                 'jabatan' => 'Admin Perusahaan',
@@ -166,7 +166,7 @@ class CustomerStaffsTableSeeder extends Seeder
             12 => 
             array (
                 'id' => 500,
-                'user_id' => 778,
+                'user_id' => 10261,
                 'customer_id' => 20733,
                 'realname' => 'Andi Ramadhan',
                 'jabatan' => 'Admin Perusahaan',
@@ -178,7 +178,7 @@ class CustomerStaffsTableSeeder extends Seeder
             13 => 
             array (
                 'id' => 501,
-                'user_id' => 779,
+                'user_id' => 10262,
                 'customer_id' => 20734,
                 'realname' => 'Bambang Saputra',
                 'jabatan' => 'Admin Perusahaan',
@@ -190,7 +190,7 @@ class CustomerStaffsTableSeeder extends Seeder
             14 => 
             array (
                 'id' => 502,
-                'user_id' => 780,
+                'user_id' => 10263,
                 'customer_id' => 20735,
                 'realname' => 'Fajar Hutapea',
                 'jabatan' => 'Admin Perusahaan',
@@ -202,7 +202,7 @@ class CustomerStaffsTableSeeder extends Seeder
             15 => 
             array (
                 'id' => 503,
-                'user_id' => 781,
+                'user_id' => 10264,
                 'customer_id' => 20736,
                 'realname' => 'Fajar Sihombing',
                 'jabatan' => 'Admin Perusahaan',
@@ -214,7 +214,7 @@ class CustomerStaffsTableSeeder extends Seeder
             16 => 
             array (
                 'id' => 504,
-                'user_id' => 782,
+                'user_id' => 10265,
                 'customer_id' => 20737,
                 'realname' => 'Endah Susanto',
                 'jabatan' => 'Admin Perusahaan',
@@ -226,7 +226,7 @@ class CustomerStaffsTableSeeder extends Seeder
             17 => 
             array (
                 'id' => 505,
-                'user_id' => 783,
+                'user_id' => 10266,
                 'customer_id' => 20738,
                 'realname' => 'Rina Tambunan',
                 'jabatan' => 'Admin Perusahaan',
@@ -238,7 +238,7 @@ class CustomerStaffsTableSeeder extends Seeder
             18 => 
             array (
                 'id' => 506,
-                'user_id' => 784,
+                'user_id' => 10267,
                 'customer_id' => 20739,
                 'realname' => 'Wahyu Silitonga',
                 'jabatan' => 'Admin Perusahaan',
@@ -250,7 +250,7 @@ class CustomerStaffsTableSeeder extends Seeder
             19 => 
             array (
                 'id' => 507,
-                'user_id' => 785,
+                'user_id' => 10268,
                 'customer_id' => 20740,
                 'realname' => 'Lina Setiawan',
                 'jabatan' => 'Admin Perusahaan',
@@ -262,7 +262,7 @@ class CustomerStaffsTableSeeder extends Seeder
             20 => 
             array (
                 'id' => 508,
-                'user_id' => 786,
+                'user_id' => 10269,
                 'customer_id' => 20741,
                 'realname' => 'Gita Anggraini',
                 'jabatan' => 'Admin Perusahaan',
@@ -274,7 +274,7 @@ class CustomerStaffsTableSeeder extends Seeder
             21 => 
             array (
                 'id' => 509,
-                'user_id' => 787,
+                'user_id' => 10270,
                 'customer_id' => 20742,
                 'realname' => 'Dewi Pratama',
                 'jabatan' => 'Admin Cabang',
@@ -286,7 +286,7 @@ class CustomerStaffsTableSeeder extends Seeder
             22 => 
             array (
                 'id' => 510,
-                'user_id' => 788,
+                'user_id' => 10271,
                 'customer_id' => 20743,
                 'realname' => 'Andi Simanjuntak',
                 'jabatan' => 'Admin Cabang',
@@ -298,7 +298,7 @@ class CustomerStaffsTableSeeder extends Seeder
             23 => 
             array (
                 'id' => 511,
-                'user_id' => 789,
+                'user_id' => 10272,
                 'customer_id' => 20744,
                 'realname' => 'Wahyu Santoso',
                 'jabatan' => 'Admin Cabang',
@@ -310,7 +310,7 @@ class CustomerStaffsTableSeeder extends Seeder
             24 => 
             array (
                 'id' => 512,
-                'user_id' => 790,
+                'user_id' => 10273,
                 'customer_id' => 20745,
                 'realname' => 'Made Anggraini',
                 'jabatan' => 'Admin Cabang',
@@ -322,7 +322,7 @@ class CustomerStaffsTableSeeder extends Seeder
             25 => 
             array (
                 'id' => 513,
-                'user_id' => 791,
+                'user_id' => 10274,
                 'customer_id' => 20746,
                 'realname' => 'Sari Maulana',
                 'jabatan' => 'Admin Cabang',
@@ -334,7 +334,7 @@ class CustomerStaffsTableSeeder extends Seeder
             26 => 
             array (
                 'id' => 514,
-                'user_id' => 792,
+                'user_id' => 10275,
                 'customer_id' => 20747,
                 'realname' => 'Slamet Tambunan',
                 'jabatan' => 'Admin Cabang',
@@ -346,7 +346,7 @@ class CustomerStaffsTableSeeder extends Seeder
             27 => 
             array (
                 'id' => 515,
-                'user_id' => 793,
+                'user_id' => 10276,
                 'customer_id' => 20748,
                 'realname' => 'Andi Sinaga',
                 'jabatan' => 'Admin Cabang',
@@ -358,7 +358,7 @@ class CustomerStaffsTableSeeder extends Seeder
             28 => 
             array (
                 'id' => 516,
-                'user_id' => 794,
+                'user_id' => 10277,
                 'customer_id' => 20749,
                 'realname' => 'Umi Utami',
                 'jabatan' => 'Admin Cabang',
@@ -370,7 +370,7 @@ class CustomerStaffsTableSeeder extends Seeder
             29 => 
             array (
                 'id' => 517,
-                'user_id' => 795,
+                'user_id' => 10278,
                 'customer_id' => 20750,
                 'realname' => 'Slamet Halim',
                 'jabatan' => 'Admin Cabang',
@@ -382,7 +382,7 @@ class CustomerStaffsTableSeeder extends Seeder
             30 => 
             array (
                 'id' => 518,
-                'user_id' => 796,
+                'user_id' => 10279,
                 'customer_id' => 20751,
                 'realname' => 'Eko Utami',
                 'jabatan' => 'Admin Cabang',
@@ -394,7 +394,7 @@ class CustomerStaffsTableSeeder extends Seeder
             31 => 
             array (
                 'id' => 519,
-                'user_id' => 797,
+                'user_id' => 10280,
                 'customer_id' => 20752,
                 'realname' => 'Cahyo Tambunan',
                 'jabatan' => 'Admin Cabang',
@@ -406,7 +406,7 @@ class CustomerStaffsTableSeeder extends Seeder
             32 => 
             array (
                 'id' => 520,
-                'user_id' => 798,
+                'user_id' => 10281,
                 'customer_id' => 20753,
                 'realname' => 'Eko Sihombing',
                 'jabatan' => 'Admin Cabang',
@@ -418,7 +418,7 @@ class CustomerStaffsTableSeeder extends Seeder
             33 => 
             array (
                 'id' => 521,
-                'user_id' => 799,
+                'user_id' => 10282,
                 'customer_id' => 20754,
                 'realname' => 'Umi Silitonga',
                 'jabatan' => 'Admin Cabang',
@@ -430,7 +430,7 @@ class CustomerStaffsTableSeeder extends Seeder
             34 => 
             array (
                 'id' => 522,
-                'user_id' => 800,
+                'user_id' => 10283,
                 'customer_id' => 20755,
                 'realname' => 'Tono Sihombing',
                 'jabatan' => 'Admin Cabang',
@@ -442,7 +442,7 @@ class CustomerStaffsTableSeeder extends Seeder
             35 => 
             array (
                 'id' => 523,
-                'user_id' => 801,
+                'user_id' => 10284,
                 'customer_id' => 20756,
                 'realname' => 'Zainal Nugroho',
                 'jabatan' => 'Admin Cabang',
@@ -454,7 +454,7 @@ class CustomerStaffsTableSeeder extends Seeder
             36 => 
             array (
                 'id' => 524,
-                'user_id' => 802,
+                'user_id' => 10285,
                 'customer_id' => 20757,
                 'realname' => 'Budi Rahayu',
                 'jabatan' => 'Admin Cabang',
@@ -466,7 +466,7 @@ class CustomerStaffsTableSeeder extends Seeder
             37 => 
             array (
                 'id' => 525,
-                'user_id' => 803,
+                'user_id' => 10286,
                 'customer_id' => 20758,
                 'realname' => 'Dedi Lestari',
                 'jabatan' => 'Admin Cabang',
@@ -478,7 +478,7 @@ class CustomerStaffsTableSeeder extends Seeder
             38 => 
             array (
                 'id' => 526,
-                'user_id' => 804,
+                'user_id' => 10287,
                 'customer_id' => 20759,
                 'realname' => 'Endah Firmansyah',
                 'jabatan' => 'Admin Cabang',
@@ -490,7 +490,7 @@ class CustomerStaffsTableSeeder extends Seeder
             39 => 
             array (
                 'id' => 527,
-                'user_id' => 805,
+                'user_id' => 10288,
                 'customer_id' => 20760,
                 'realname' => 'Yanti Hidayat',
                 'jabatan' => 'Admin Cabang',
@@ -502,7 +502,7 @@ class CustomerStaffsTableSeeder extends Seeder
             40 => 
             array (
                 'id' => 528,
-                'user_id' => 806,
+                'user_id' => 10289,
                 'customer_id' => 20761,
                 'realname' => 'Cahyo Siahaan',
                 'jabatan' => 'Admin Cabang',
@@ -514,7 +514,7 @@ class CustomerStaffsTableSeeder extends Seeder
             41 => 
             array (
                 'id' => 529,
-                'user_id' => 807,
+                'user_id' => 10290,
                 'customer_id' => 20762,
                 'realname' => 'Kadek Siregar',
                 'jabatan' => 'Admin Cabang',
@@ -526,7 +526,7 @@ class CustomerStaffsTableSeeder extends Seeder
             42 => 
             array (
                 'id' => 530,
-                'user_id' => 808,
+                'user_id' => 10291,
                 'customer_id' => 20763,
                 'realname' => 'Eko Pratama',
                 'jabatan' => 'Admin Cabang',
@@ -538,7 +538,7 @@ class CustomerStaffsTableSeeder extends Seeder
             43 => 
             array (
                 'id' => 531,
-                'user_id' => 809,
+                'user_id' => 10292,
                 'customer_id' => 20764,
                 'realname' => 'Rina Wibowo',
                 'jabatan' => 'Admin Cabang',
@@ -550,7 +550,7 @@ class CustomerStaffsTableSeeder extends Seeder
             44 => 
             array (
                 'id' => 532,
-                'user_id' => 810,
+                'user_id' => 10293,
                 'customer_id' => 20765,
                 'realname' => 'Made Purba',
                 'jabatan' => 'Admin Cabang',
@@ -562,7 +562,7 @@ class CustomerStaffsTableSeeder extends Seeder
             45 => 
             array (
                 'id' => 533,
-                'user_id' => 811,
+                'user_id' => 10294,
                 'customer_id' => 20766,
                 'realname' => 'Andi Firmansyah',
                 'jabatan' => 'Admin Cabang',
@@ -574,7 +574,7 @@ class CustomerStaffsTableSeeder extends Seeder
             46 => 
             array (
                 'id' => 534,
-                'user_id' => 812,
+                'user_id' => 10295,
                 'customer_id' => 20767,
                 'realname' => 'Endah Rahayu',
                 'jabatan' => 'Admin Cabang',
@@ -586,7 +586,7 @@ class CustomerStaffsTableSeeder extends Seeder
             47 => 
             array (
                 'id' => 535,
-                'user_id' => 813,
+                'user_id' => 10296,
                 'customer_id' => 20768,
                 'realname' => 'Nina Nugroho',
                 'jabatan' => 'Admin Cabang',
@@ -598,7 +598,7 @@ class CustomerStaffsTableSeeder extends Seeder
             48 => 
             array (
                 'id' => 536,
-                'user_id' => 814,
+                'user_id' => 10297,
                 'customer_id' => 20769,
                 'realname' => 'Hadi Halim',
                 'jabatan' => 'Admin Cabang',
@@ -610,7 +610,7 @@ class CustomerStaffsTableSeeder extends Seeder
             49 => 
             array (
                 'id' => 537,
-                'user_id' => 815,
+                'user_id' => 10298,
                 'customer_id' => 20770,
                 'realname' => 'Joko Tambunan',
                 'jabatan' => 'Admin Cabang',
@@ -622,7 +622,7 @@ class CustomerStaffsTableSeeder extends Seeder
             50 => 
             array (
                 'id' => 538,
-                'user_id' => 816,
+                'user_id' => 10299,
                 'customer_id' => 20771,
                 'realname' => 'Budi Sinaga',
                 'jabatan' => 'Admin Cabang',
@@ -634,7 +634,7 @@ class CustomerStaffsTableSeeder extends Seeder
             51 => 
             array (
                 'id' => 539,
-                'user_id' => 817,
+                'user_id' => 10300,
                 'customer_id' => 20772,
                 'realname' => 'Agus Hidayat',
                 'jabatan' => 'Admin Cabang',
@@ -646,7 +646,7 @@ class CustomerStaffsTableSeeder extends Seeder
             52 => 
             array (
                 'id' => 540,
-                'user_id' => 818,
+                'user_id' => 10301,
                 'customer_id' => 20773,
                 'realname' => 'Eko Susanto',
                 'jabatan' => 'Admin Cabang',
@@ -658,7 +658,7 @@ class CustomerStaffsTableSeeder extends Seeder
             53 => 
             array (
                 'id' => 541,
-                'user_id' => 819,
+                'user_id' => 10302,
                 'customer_id' => 20774,
                 'realname' => 'Bambang Rahayu',
                 'jabatan' => 'Admin Cabang',
@@ -670,7 +670,7 @@ class CustomerStaffsTableSeeder extends Seeder
             54 => 
             array (
                 'id' => 542,
-                'user_id' => 820,
+                'user_id' => 10303,
                 'customer_id' => 20775,
                 'realname' => 'Adi Purba',
                 'jabatan' => 'Admin Cabang',
@@ -682,7 +682,7 @@ class CustomerStaffsTableSeeder extends Seeder
             55 => 
             array (
                 'id' => 543,
-                'user_id' => 821,
+                'user_id' => 10304,
                 'customer_id' => 20776,
                 'realname' => 'Ratna Sinaga',
                 'jabatan' => 'Admin Cabang',
@@ -694,7 +694,7 @@ class CustomerStaffsTableSeeder extends Seeder
             56 => 
             array (
                 'id' => 544,
-                'user_id' => 822,
+                'user_id' => 10305,
                 'customer_id' => 20777,
                 'realname' => 'Lina Tambunan',
                 'jabatan' => 'Admin Cabang',
@@ -706,7 +706,7 @@ class CustomerStaffsTableSeeder extends Seeder
             57 => 
             array (
                 'id' => 545,
-                'user_id' => 823,
+                'user_id' => 10306,
                 'customer_id' => 20778,
                 'realname' => 'Budi Lestari',
                 'jabatan' => 'Admin Cabang',
@@ -718,7 +718,7 @@ class CustomerStaffsTableSeeder extends Seeder
             58 => 
             array (
                 'id' => 546,
-                'user_id' => 824,
+                'user_id' => 10307,
                 'customer_id' => 20779,
                 'realname' => 'Made Setiawan',
                 'jabatan' => 'Admin Cabang',
@@ -730,7 +730,7 @@ class CustomerStaffsTableSeeder extends Seeder
             59 => 
             array (
                 'id' => 547,
-                'user_id' => 825,
+                'user_id' => 10308,
                 'customer_id' => 20780,
                 'realname' => 'Umi Sinaga',
                 'jabatan' => 'Admin Cabang',
@@ -742,7 +742,7 @@ class CustomerStaffsTableSeeder extends Seeder
             60 => 
             array (
                 'id' => 548,
-                'user_id' => 826,
+                'user_id' => 10309,
                 'customer_id' => 20781,
                 'realname' => 'Lina Sinaga',
                 'jabatan' => 'Admin Cabang',
@@ -754,7 +754,7 @@ class CustomerStaffsTableSeeder extends Seeder
             61 => 
             array (
                 'id' => 549,
-                'user_id' => 827,
+                'user_id' => 10310,
                 'customer_id' => 20782,
                 'realname' => 'Dwi Simanjuntak',
                 'jabatan' => 'Admin Cabang',
@@ -766,7 +766,7 @@ class CustomerStaffsTableSeeder extends Seeder
             62 => 
             array (
                 'id' => 550,
-                'user_id' => 828,
+                'user_id' => 10311,
                 'customer_id' => 20783,
                 'realname' => 'Made Utami',
                 'jabatan' => 'Admin Cabang',
@@ -778,7 +778,7 @@ class CustomerStaffsTableSeeder extends Seeder
             63 => 
             array (
                 'id' => 551,
-                'user_id' => 829,
+                'user_id' => 10312,
                 'customer_id' => 20784,
                 'realname' => 'Andi Santoso',
                 'jabatan' => 'Admin Cabang',
@@ -790,7 +790,7 @@ class CustomerStaffsTableSeeder extends Seeder
             64 => 
             array (
                 'id' => 552,
-                'user_id' => 830,
+                'user_id' => 10313,
                 'customer_id' => 20785,
                 'realname' => 'Fajar Wibowo',
                 'jabatan' => 'Admin Cabang',
@@ -802,7 +802,7 @@ class CustomerStaffsTableSeeder extends Seeder
             65 => 
             array (
                 'id' => 553,
-                'user_id' => 831,
+                'user_id' => 10314,
                 'customer_id' => 20786,
                 'realname' => 'Putra Halim',
                 'jabatan' => 'Admin Cabang',
@@ -814,7 +814,7 @@ class CustomerStaffsTableSeeder extends Seeder
             66 => 
             array (
                 'id' => 554,
-                'user_id' => 832,
+                'user_id' => 10315,
                 'customer_id' => 20787,
                 'realname' => 'Zainal Susanto',
                 'jabatan' => 'Admin Cabang',
@@ -826,7 +826,7 @@ class CustomerStaffsTableSeeder extends Seeder
             67 => 
             array (
                 'id' => 555,
-                'user_id' => 833,
+                'user_id' => 10316,
                 'customer_id' => 20788,
                 'realname' => 'Yanti Silitonga',
                 'jabatan' => 'Admin Cabang',
@@ -838,7 +838,7 @@ class CustomerStaffsTableSeeder extends Seeder
             68 => 
             array (
                 'id' => 556,
-                'user_id' => 834,
+                'user_id' => 10317,
                 'customer_id' => 20789,
                 'realname' => 'Yanti Simanjuntak',
                 'jabatan' => 'Admin Cabang',
@@ -850,7 +850,7 @@ class CustomerStaffsTableSeeder extends Seeder
             69 => 
             array (
                 'id' => 557,
-                'user_id' => 835,
+                'user_id' => 10318,
                 'customer_id' => 20790,
                 'realname' => 'Budi Maulana',
                 'jabatan' => 'Admin Cabang',
@@ -862,7 +862,7 @@ class CustomerStaffsTableSeeder extends Seeder
             70 => 
             array (
                 'id' => 558,
-                'user_id' => 836,
+                'user_id' => 10319,
                 'customer_id' => 20791,
                 'realname' => 'Wahyu Siregar',
                 'jabatan' => 'Admin Cabang',
@@ -874,7 +874,7 @@ class CustomerStaffsTableSeeder extends Seeder
             71 => 
             array (
                 'id' => 559,
-                'user_id' => 837,
+                'user_id' => 10320,
                 'customer_id' => 20792,
                 'realname' => 'Adi Gunawan',
                 'jabatan' => 'Admin Cabang',
@@ -886,7 +886,7 @@ class CustomerStaffsTableSeeder extends Seeder
             72 => 
             array (
                 'id' => 560,
-                'user_id' => 838,
+                'user_id' => 10321,
                 'customer_id' => 20793,
                 'realname' => 'Bambang Simanjuntak',
                 'jabatan' => 'Admin Cabang',
@@ -898,7 +898,7 @@ class CustomerStaffsTableSeeder extends Seeder
             73 => 
             array (
                 'id' => 561,
-                'user_id' => 839,
+                'user_id' => 10322,
                 'customer_id' => 20794,
                 'realname' => 'Rina Manullang',
                 'jabatan' => 'Admin Cabang',
@@ -910,7 +910,7 @@ class CustomerStaffsTableSeeder extends Seeder
             74 => 
             array (
                 'id' => 562,
-                'user_id' => 840,
+                'user_id' => 10323,
                 'customer_id' => 20795,
                 'realname' => 'Slamet Ramadhan',
                 'jabatan' => 'Admin Cabang',
@@ -922,7 +922,7 @@ class CustomerStaffsTableSeeder extends Seeder
             75 => 
             array (
                 'id' => 563,
-                'user_id' => 841,
+                'user_id' => 10324,
                 'customer_id' => 20796,
                 'realname' => 'Budi Hidayat',
                 'jabatan' => 'Admin Cabang',
@@ -934,7 +934,7 @@ class CustomerStaffsTableSeeder extends Seeder
             76 => 
             array (
                 'id' => 564,
-                'user_id' => 842,
+                'user_id' => 10325,
                 'customer_id' => 20797,
                 'realname' => 'Gita Sihombing',
                 'jabatan' => 'Admin Cabang',
@@ -946,7 +946,7 @@ class CustomerStaffsTableSeeder extends Seeder
             77 => 
             array (
                 'id' => 565,
-                'user_id' => 843,
+                'user_id' => 10326,
                 'customer_id' => 20798,
                 'realname' => 'Joko Nugroho',
                 'jabatan' => 'Admin Cabang',
@@ -958,7 +958,7 @@ class CustomerStaffsTableSeeder extends Seeder
             78 => 
             array (
                 'id' => 566,
-                'user_id' => 844,
+                'user_id' => 10327,
                 'customer_id' => 20799,
                 'realname' => 'Eko Wijaya',
                 'jabatan' => 'Admin Cabang',
@@ -970,7 +970,7 @@ class CustomerStaffsTableSeeder extends Seeder
             79 => 
             array (
                 'id' => 567,
-                'user_id' => 845,
+                'user_id' => 10328,
                 'customer_id' => 20800,
                 'realname' => 'Umi Hutapea',
                 'jabatan' => 'Admin Cabang',
@@ -982,7 +982,7 @@ class CustomerStaffsTableSeeder extends Seeder
             80 => 
             array (
                 'id' => 568,
-                'user_id' => 846,
+                'user_id' => 10329,
                 'customer_id' => 20801,
                 'realname' => 'Agus Santoso',
                 'jabatan' => 'Admin Cabang',
@@ -994,7 +994,7 @@ class CustomerStaffsTableSeeder extends Seeder
             81 => 
             array (
                 'id' => 569,
-                'user_id' => 847,
+                'user_id' => 10330,
                 'customer_id' => 20721,
                 'realname' => 'Rudi Hartono',
                 'jabatan' => 'HRD',
@@ -1006,7 +1006,7 @@ class CustomerStaffsTableSeeder extends Seeder
             82 => 
             array (
                 'id' => 570,
-                'user_id' => 848,
+                'user_id' => 10331,
                 'customer_id' => 20722,
                 'realname' => 'Susi Susanti',
                 'jabatan' => 'HRD',
@@ -1018,7 +1018,7 @@ class CustomerStaffsTableSeeder extends Seeder
             83 => 
             array (
                 'id' => 571,
-                'user_id' => 849,
+                'user_id' => 10332,
                 'customer_id' => 20723,
                 'realname' => 'Teguh Prasetyo',
                 'jabatan' => 'HRD',
@@ -1030,7 +1030,7 @@ class CustomerStaffsTableSeeder extends Seeder
             84 => 
             array (
                 'id' => 572,
-                'user_id' => 850,
+                'user_id' => 10333,
                 'customer_id' => 20724,
                 'realname' => 'Dian Pertiwi',
                 'jabatan' => 'Finance',
@@ -1042,7 +1042,7 @@ class CustomerStaffsTableSeeder extends Seeder
             85 => 
             array (
                 'id' => 573,
-                'user_id' => 851,
+                'user_id' => 10334,
                 'customer_id' => 20724,
                 'realname' => 'Hendra Gunawan',
                 'jabatan' => 'Purchasing',
@@ -1054,7 +1054,7 @@ class CustomerStaffsTableSeeder extends Seeder
             86 => 
             array (
                 'id' => 574,
-                'user_id' => 852,
+                'user_id' => 10335,
                 'customer_id' => 20724,
                 'realname' => 'Ratih Kumala',
                 'jabatan' => 'HRD',
@@ -1066,7 +1066,7 @@ class CustomerStaffsTableSeeder extends Seeder
             87 => 
             array (
                 'id' => 575,
-                'user_id' => 853,
+                'user_id' => 10336,
                 'customer_id' => 20725,
                 'realname' => 'Rina Marlina',
                 'jabatan' => 'Finance',
@@ -1078,7 +1078,7 @@ class CustomerStaffsTableSeeder extends Seeder
             88 => 
             array (
                 'id' => 576,
-                'user_id' => 854,
+                'user_id' => 10337,
                 'customer_id' => 20725,
                 'realname' => 'Bowo Laksono',
                 'jabatan' => 'Purchasing',
@@ -1090,7 +1090,7 @@ class CustomerStaffsTableSeeder extends Seeder
             89 => 
             array (
                 'id' => 577,
-                'user_id' => 855,
+                'user_id' => 10338,
                 'customer_id' => 20725,
                 'realname' => 'Sri Wahyuni',
                 'jabatan' => 'HRD',

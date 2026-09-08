@@ -94,6 +94,12 @@ return [
                     'type'    => 'number',
                     'default' => '4',
                 ],
+                [
+                    'key'     => 'customer_user_start_number',
+                    'label'   => 'User Start Number',
+                    'type'    => 'number',
+                    'default' => '10249',
+                ],
             ],
         ],
     ],
