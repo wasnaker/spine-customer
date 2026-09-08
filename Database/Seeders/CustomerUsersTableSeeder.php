@@ -1190,7 +1190,9 @@ class CustomerUsersTableSeeder extends Seeder
                 'updated_at' => '2026-09-07 13:53:58',
             ),
         ));
-        
-        
+
+        // Set AUTO_INCREMENT setelah module Customer selesai:
+        // user baru via app mulai dari 80000, tidak pernah masuk range statis modul lain.
+        \DB::statement('ALTER TABLE users AUTO_INCREMENT = 80000');
     }
 }
