@@ -52,6 +52,22 @@ class Customer extends Model
         return ['ulid'];
     }
 
+    public static function labels(): array
+    {
+        return [
+            'type'        => 'Tipe',
+            'code'        => 'Kode',
+            'name'        => 'Nama',
+            'email'       => 'Email',
+            'phone'       => 'Telepon',
+            'address'     => 'Alamat',
+            'province_id' => 'Provinsi',
+            'regency_id'  => 'Kota',
+            'vat_id'      => 'NPWP',
+            'is_active'   => 'Aktif',
+        ];
+    }
+
     public function branches(): HasMany
     {
         return $this->hasMany(Customer::class, 'parent_id')->where('type', 'branch');

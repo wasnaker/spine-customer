@@ -43,14 +43,16 @@ class LogCustomerActivity
             return;
         }
 
+        $changes = $event->changes;
+
         $this->activityLog->log(
-            "Customer updated: " . $this->label($event->entity),
+            "Customer updated: " . $this->label($event->entity) . " (" . $this->describe($changes) . ")",
             $event->entity,
             $this->user(),
-            ['event' => 'updated', 'changes' => $event->changes],
+            ['event' => 'updated', 'changes' => $changes],
         );
 
-        $status = $event->changes['status'] ?? null;
+        $status = $changes['status'] ?? null;
         if ($status && $status['old'] !== $status['new']) {
             $this->activityLog->log(
                 "Customer status changed: {$status['old']} -> {$status['new']}",
@@ -75,6 +77,22 @@ class LogCustomerActivity
             null,
             $event->entityType,
         );
+    }
+
+    private function describe(array $changes): string
+    {
+        $parts = [];
+
+        foreach ($changes as $field => $change) {
+            if (in_array($field, ['updated_at', 'remember_token'], true)) {
+                continue;
+            }
+
+            $label = Customer::labels()[$field] ?? $field;
+            $parts[] = $label . ': ' . $change['old'] . ' -> ' . $change['new'];
+        }
+
+        return implode(', ', $parts);
     }
 
     private function label($entity): string
