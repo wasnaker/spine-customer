@@ -115,7 +115,7 @@ return [
             // Customers di-block; data company via Profile /user/company).
             // surveyor:view-connected = menu Surveyors utk rekan terhubung.
             ['name' => 'customer',              'label' => 'Customer',
-             'permissions' => ['connection:view', 'surveyor:view-connected', 'pengawas:view']],
+             'permissions' => ['connection:view', 'connection:create', 'surveyor:view-connected', 'pengawas:view']],
             ['name' => 'customer-branch-admin', 'label' => 'Customer Branch Admin',
              'permissions' => ['connection:view', 'connection:create', 'connection:approve', 'connection:cancel',
                 'surveyor:view-connected', 'pengawas:view']],
