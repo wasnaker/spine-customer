@@ -36,7 +36,7 @@ class Customer extends Model
     protected $fillable = [
         'type',
         'code', 'name', 'email', 'phone',
-        'address', 'province_id', 'regency_id', 'vat_id', 'is_active', 'parent_id', 'admin_id',
+        'address', 'province_id', 'regency_id', 'postal_code', 'vat_id', 'nib', 'is_active', 'parent_id', 'admin_id',
     ];
 
     protected $casts = [

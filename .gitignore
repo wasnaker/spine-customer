@@ -3,3 +3,6 @@
 /.idea
 /.vscode
 /storage/*.key
+
+# graphify artifact
+graphify-out/
